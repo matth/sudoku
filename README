@@ -1,0 +1,18 @@
+Ruby Sudoku
+ 
+Description:
+This is a small fledgling ruby library for sudoku puzzles. Currently
+implements a basic solver and some utility classes,
+ 
+Running:
+No gem or anything yet, just require the files as normal
+ 
+Assumptions:
+This application has been tested on Mac OSX with Ruby 1.8, no 
+guarantees with anything else
+ 
+Requirements:
+Ruby
+
+Author:
+Matt Haynes, UK, <matt@matthaynes.net>
