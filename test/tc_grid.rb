@@ -1,33 +1,33 @@
-require 'sudoko/grid'
+require 'sudoku/grid'
 
 class TestGrid < Test::Unit::TestCase
 	
 	def test_to_s
 		grid_str = "974236158638591742125487936316754289742918563589362417867125394253649871491873625"
-		grid = Sudoko::Grid.new(grid_str)
+		grid = Sudoku::Grid.new(grid_str)
 		assert_equal(grid_str, grid.to_s)
 	end
 
 	def test_valid_grid_str
-		assert_nothing_raised {grid = Sudoko::Grid.new(get_grid_str)}
+		assert_nothing_raised {grid = Sudoku::Grid.new(get_grid_str)}
 	end
 	
 	def test_invalid_grid_str
-		assert_raise(Exception) {grid = Sudoko::Grid.new("helloworld")}
-		assert_raise(Exception) {grid = Sudoko::Grid.new("abcdefghi.........123456789.........123456789.........123456789.........123456789")}
-		assert_raise(Exception) {grid = Sudoko::Grid.new("12345678-.........123456789.........123456789.........123456789.........123456789")}		
-		assert_raise(Exception) {grid = Sudoko::Grid.new("!@£$%^&*(.........123456789.........123456789.........123456789.........123456789")}				
+		assert_raise(Exception) {grid = Sudoku::Grid.new("helloworld")}
+		assert_raise(Exception) {grid = Sudoku::Grid.new("abcdefghi.........123456789.........123456789.........123456789.........123456789")}
+		assert_raise(Exception) {grid = Sudoku::Grid.new("12345678-.........123456789.........123456789.........123456789.........123456789")}		
+		assert_raise(Exception) {grid = Sudoku::Grid.new("!@£$%^&*(.........123456789.........123456789.........123456789.........123456789")}				
 	end
 	
 	def test_set
-		grid = Sudoko::Grid.new(".................................................................................")
+		grid = Sudoku::Grid.new(".................................................................................")
 		grid.set(1,1, 3)
 		assert_equal(3, grid.get_row(1)[0])
 	end
 	
 	def test_get_row
 
-		grid = Sudoko::Grid.new(get_grid_str)
+		grid = Sudoku::Grid.new(get_grid_str)
 		
 		assert_equal("111111111", grid.get_row(1).join(""))
 		assert_equal("222222222", grid.get_row(2).join(""))		
@@ -43,7 +43,7 @@ class TestGrid < Test::Unit::TestCase
 
 	def test_get_col
 
-		grid = Sudoko::Grid.new("123456789.........123456789.........123456789.........123456789.........123456789")
+		grid = Sudoku::Grid.new("123456789.........123456789.........123456789.........123456789.........123456789")
 
 		(1..9).each {|i| 
 			assert_equal(grid.get_col(i).join(""), "#{i.to_s}0#{i.to_s}0#{i.to_s}0#{i.to_s}0#{i.to_s}")
@@ -53,7 +53,7 @@ class TestGrid < Test::Unit::TestCase
 	
 	def test_get_box_from_col_and_row
 	
-		grid = Sudoko::Grid.new("111222333111222333111222333444555666444555666444555666777888999777888999777888999")		
+		grid = Sudoku::Grid.new("111222333111222333111222333444555666444555666444555666777888999777888999777888999")		
 		
 		assert_equal(grid.get_box_from_col_and_row(1, 1).join(""), "111111111")
 		assert_equal(grid.get_box_from_col_and_row(4, 3).join(""), "222222222")
@@ -69,7 +69,7 @@ class TestGrid < Test::Unit::TestCase
 	
 	def test_get_box
 	
-		grid = Sudoko::Grid.new("111222333111222333111222333444555666444555666444555666777888999777888999777888999")
+		grid = Sudoku::Grid.new("111222333111222333111222333444555666444555666444555666777888999777888999777888999")
 
 		assert_equal(grid.get_box(1).join(""), "111111111")
 		assert_equal(grid.get_box(2).join(""), "222222222")
@@ -84,31 +84,31 @@ class TestGrid < Test::Unit::TestCase
 	end
 	
 	def test_is_complete
-		grid = Sudoko::Grid.new(get_grid_str)
+		grid = Sudoku::Grid.new(get_grid_str)
 		assert_equal(true, grid.is_complete)
 		
-		grid = Sudoko::Grid.new(get_grid_str.gsub(/[1]/, "."))
+		grid = Sudoku::Grid.new(get_grid_str.gsub(/[1]/, "."))
 		assert_equal(false, grid.is_complete)
 	end
 	
 	def test_is_valid
 
 		# Duplicate box		
-		grid = Sudoko::Grid.new("..9.7...5..21..9..1...28....7...5..1..851.....5....3.......3..68........21.....87")
+		grid = Sudoku::Grid.new("..9.7...5..21..9..1...28....7...5..1..851.....5....3.......3..68........21.....87")
 		assert_equal(false, grid.is_valid)
 		
 		# Duplicate col
-		grid = Sudoko::Grid.new("6.159.....9..1............4.7.314..6.24.....5..3....1...6.....3...9.2.4......16..")
+		grid = Sudoku::Grid.new("6.159.....9..1............4.7.314..6.24.....5..3....1...6.....3...9.2.4......16..")
 		assert_equal(false, grid.is_valid)
 
 		# Duplicate row
-		grid = Sudoko::Grid.new(".4.1..35.............2.5......4.89..26.....12.5.3....7..4...16.6....7....1..8..2.")
+		grid = Sudoku::Grid.new(".4.1..35.............2.5......4.89..26.....12.5.3....7..4...16.6....7....1..8..2.")
 		assert_equal(false, grid.is_valid)		
 		
-		grid = Sudoko::Grid.new("974236158638591742125487936316754289742918563589362417867125394253649871491873625")
+		grid = Sudoku::Grid.new("974236158638591742125487936316754289742918563589362417867125394253649871491873625")
 		assert_equal(true, grid.is_valid)
 		
-		grid = Sudoko::Grid.new("9........8........7........6........5........4........3........2........1........")
+		grid = Sudoku::Grid.new("9........8........7........6........5........4........3........2........1........")
 		assert_equal(true, grid.is_valid)
 		
 	end

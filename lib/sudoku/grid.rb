@@ -1,6 +1,6 @@
-module Sudoko
+module Sudoku
 #
-# This class represents a sudoko grid with helper methods for getting
+# This class represents a sudoku grid with helper methods for getting
 # rows, columns and boxes, setting methods, testing for completness and 
 # validity.
 # 
@@ -15,20 +15,20 @@ module Sudoko
 
 class Grid
 
-	# Sudoko grid object
+	# Sudoku grid object
 	#
 	# Takes a string as a parameter, this is the conventional 81 character string representation
-	# of a sudoko puzzle. Empty squares can be represented by either a "." or "0"
+	# of a sudoku puzzle. Empty squares can be represented by either a "." or "0"
 	#
 	# Example:
 	#
-	#	require 'sudoko/grid'
+	#	require 'sudoku/grid'
 	# 	
-	# 	grid = Sudoko::Grid.new("..2.3...8.....8....31.2.....6..5.27..1.....5.2.4.6..31....8.6.5.......13..531.4..")
+	# 	grid = Sudoku::Grid.new("..2.3...8.....8....31.2.....6..5.27..1.....5.2.4.6..31....8.6.5.......13..531.4..")
 	#
 	# or 
 	#
-	#   grid = Sudoko::Grid.new("002030008000008000031020000060050270010000050204060031000080605000000013005310400")
+	#   grid = Sudoku::Grid.new("002030008000008000031020000060050270010000050204060031000080605000000013005310400")
 	#		
 	def initialize(grid_str)
 	
@@ -55,12 +55,12 @@ class Grid
 	end 
 	
 	# Output grid object as a string, this is the conventional 81 character representation
-	# of a sudoko puzzle, using the character "." for emoty squares
+	# of a sudoku puzzle, using the character "." for empty squares
 	def to_s
 		@matrix.flatten.join.gsub(/0/, '.')
 	end
 		
-	# "Pretty print" the sudoko grid as a string
+	# "Pretty print" the sudoku grid as a string
 	#
 	# Example output:
 	#
@@ -125,7 +125,7 @@ class Grid
 	# Test the grid is valid. This will check that each row, column and
 	# box has no duplicates in. Note, this will not check that the solution 
 	# is unique or that the puzzle is symetrical which are popularly seen as 
-	# criteria for a valid sudoko
+	# criteria for a valid sudoku
 	def is_valid
 		
 		(1..9).each {|i|

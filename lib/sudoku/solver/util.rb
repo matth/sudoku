@@ -1,7 +1,7 @@
-module Sudoko
+module Sudoku
 	module Solver
 
-		# This holds some generic utility methods for solving sudoko puzzles
+		# This holds some generic utility methods for solving sudoku puzzles
 		# 
 		# Copyright (c) 2009 Matt Haynes
 		# 

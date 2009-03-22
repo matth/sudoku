@@ -1,7 +1,7 @@
-require 'sudoko/grid'
-require 'sudoko/solver/util'
+require 'sudoku/grid'
+require 'sudoku/solver/util'
 
-module Sudoko
+module Sudoku
 	module Solver
 
 		# This is a pretty simplistic brute-force backtracing algorithm, it's based
@@ -23,7 +23,7 @@ module Sudoko
 				
 				@solutions = []
 				
-				if (!Sudoko::Solver::Util::enough_givens?(grid))
+				if (!Sudoku::Solver::Util::enough_givens?(grid))
 					raise Exception.new("Not enough givens to solve this puzzle")
 				end
 
@@ -47,7 +47,7 @@ module Sudoko
 						(0..8).each { |j|
 							next if grid.get_col(i + 1)[j] != 0
 							
-							c = Sudoko::Solver::Util.get_candidates(grid, i + 1, j + 1)
+							c = Sudoku::Solver::Util.get_candidates(grid, i + 1, j + 1)
 							
 							# If nothing is permissible, there is no solution at this level.
 							return false if (c.length == 0)
@@ -74,7 +74,7 @@ module Sudoko
 			 
 					# We have two or more choices. We need to search both...
 					omin[:candidates].each {|v|
-						mtmp = Sudoko::Grid.new(grid.to_s)
+						mtmp = Sudoku::Grid.new(grid.to_s)
 						mtmp.set(omin[:i] + 1, omin[:j] + 1, v)
 						ret = solve(mtmp)
 						if ret != false
