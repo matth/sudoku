@@ -23,7 +23,7 @@ Rake::RDocTask.new do |rd|
 	rd.rdoc_files.include("README", "lib/**/*.rb")
 end
 
-task :package => [:rerdoc] do
+task :package => [:test, :rerdoc] do
 	sh "tar -cf sudoku.tar *"
 	sh "gzip sudoku.tar"
 end
