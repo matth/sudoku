@@ -26,11 +26,12 @@ module Sudoku
 		
 			attr_accessor :solutions
 		
-			def initialize(grid)
+			# Solve the grid, optionally check the number of givens is more than 17
+			def initialize(grid, check_givens = true)
 				
 				@solutions = []
 				
-				if (!Sudoku::Solver::Util::enough_givens?(grid))
+				if (check_givens && !Sudoku::Solver::Util::enough_givens?(grid))
 					raise Exception.new("Not enough givens to solve this puzzle")
 				end
 
