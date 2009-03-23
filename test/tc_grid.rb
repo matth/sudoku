@@ -1,5 +1,3 @@
-require 'sudoku/grid'
-
 class TestGrid < Test::Unit::TestCase
 	
 	def test_to_s

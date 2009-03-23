@@ -1,0 +1,1 @@
+require 'sudoku/generator/full_grid_factory'

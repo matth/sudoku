@@ -1,6 +1,3 @@
-require 'sudoku/grid'
-require 'sudoku/solver/util'
-
 class TestSolverUtil < Test::Unit::TestCase
 
 	def test_not_enough_givens

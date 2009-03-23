@@ -1,5 +1,3 @@
-require 'sudoku/grid'
-require 'sudoku/solver/simple'
 
 # A lot of these test cases come from:
 # http://www.sudopedia.org/wiki/Invalid_Test_Cases

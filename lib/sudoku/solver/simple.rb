@@ -1,27 +1,9 @@
-require 'sudoku/grid'
-require 'sudoku/solver/util'
-
 module Sudoku
 	module Solver
 
 		# This is a pretty simplistic brute-force backtracing algorithm, it's based
 		# upon the example at http://en.wikipedia.org/wiki/Algorithmics_of_sudoku
 		# 
-		# Copyright (c) 2009 Matt Haynes
-		# 
-		# This program is free software: you can redistribute it and/or modify
-		# it under the terms of the GNU General Public License as published by
-		# the Free Software Foundation, either version 3 of the License, or
-		# (at your option) any later version.
-		# 
-		# This program is distributed in the hope that it will be useful,
-		# but WITHOUT ANY WARRANTY; without even the implied warranty of
-		# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-		# GNU General Public License for more details.
-		# 
-		# You should have received a copy of the GNU General Public License
-		# along with this program.  If not, see <http://www.gnu.org/licenses/>
-		#	
 		class Simple
 		
 			attr_accessor :solutions

@@ -1,5 +1,3 @@
-require 'sudoku/generator/full_grid_factory'
-
 class TestGenerator < Test::Unit::TestCase
 
 	def test_fill_grid
